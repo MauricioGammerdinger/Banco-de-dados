@@ -1,0 +1,25 @@
+1) recrie a coluna "morte"
+R: ALTER TABLE pet
+ADD COLUMN morte date after nascimento
+2) carregue os dados para a coluna "morte" a partir do  "update-pets"
+
+https://drive.google.com/file/d/1da2xPwr2fQquffY2H4aYD2TFxPvkkdEg/view?usp=sharing
+
+3) modifique a coluna "espécie" de forma que não admita valores nulos
+R: ALTER TABLE pet
+   MODIFY especie varchar(10) not null;
+
+4) para a coluna "espécie", altere todas as ocorrências de "cachorro" para "cão"
+R: update pet
+   set especie = 'cao'
+   where especie = 'cachorro';
+
+5) exiba "nome, sexo e espécie" dos animais disponíveis para adoção (dono desconhecido)
+R: select nome, sexo , especie from pet where tutor = 'desconhecido';
+
+6) apague todos os registros de animais que não tenham dono
+R:DELETE FROM pet
+  WHERE tutor = 'desconhecido' ;
+
+7) exiba "nome e data de nascimento" das fêmeas nascidas entre os anos 2000 e 2022
+R: select nome, nascimento from pet where sexo = 'f' and nascimento > '1999-12-31'
